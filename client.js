@@ -19,6 +19,7 @@ eventHandler();
 
 function eventHandler() {
   $('#submitButton').on('click', addWorker);
+  $('#removeButton').on('click', removeEmployeeArray);
 }
 //functions for eventHandler
 function createEmoployee() {
@@ -50,9 +51,26 @@ $('#tableBody').empty();
 for (let worker of allWorkers) {
   $('#tableBody').append('<tr>' + '<td>' + worker.fName + '</td>' +
                         '<td>' + worker.lName + '</td>' +
-                        '<td>' + worker.idNum + '</td>' +
+                        '<td class="empId">' + worker.idNum + '</td>' +
                         '<td>' + worker.jobTitle + '</td>' +
                         '<td class="salary">' + worker.annualSalary + '</td>' + '</tr>');
                       }
+                      console.log();
 calcTotalSalary();
+}
+function removeEmployeeDom() {
+  let inputEmployee = $('#removeInput').val();
+
+}
+
+function removeEmployeeArray() {
+  let inputEmployee = $('#removeInput').val();
+  for (var i = 0; i < allWorkers.length; i++) {
+    if (inputEmployee === allWorkers[i].idNum) {
+      allWorkers.splice(i, 1);
+      calcTotalSalary();
+      removeEmployeeDom();
+       break;
+    }
+  }
 }
