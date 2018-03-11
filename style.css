@@ -7,5 +7,12 @@ h1 {
 #salaryTable {
   width: 100%;
   border: 1px solid black;
-  border-collapse: collapse;
+}
+.redSalary {
+  background-color: crimson;
+  float: right;
+}
+.greenSalary {
+  background-color: chartreuse;
+  float: right;
 }
