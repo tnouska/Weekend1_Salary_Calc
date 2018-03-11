@@ -11,6 +11,7 @@ h1 {
 .redSalary {
   background-color: crimson;
   float: right;
+  color: white;
 }
 .greenSalary {
   background-color: chartreuse;

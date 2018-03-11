@@ -20,8 +20,13 @@ eventHandler();
 function eventHandler() {
   $('#submitButton').on('click', addWorker);
   $('#removeButton').on('click', removeEmployeeArray);
+  // $('#tableBody').on('click', '.workerSalary', removeEmployeeDom);
 }
 //functions for eventHandler
+function addWorker() {
+createEmoployee();
+updateDom();
+}
 function createEmoployee() {
   let fNameIn = $('#fnInput').val();
   let lNameIn = $('#lnInput').val();
@@ -36,6 +41,8 @@ function calcTotalSalary() {
   let totalSalary = 0;
   for (var i = 0; i < allWorkers.length; i++) {
     totalSalary += parseInt(allWorkers[i].annualSalary);
+    console.log('allWorkers[i]',allWorkers[i].annualSalary);
+    console.log('totalSalary',totalSalary);
   }
   $('#totalSalary').empty();
   if (totalSalary > 20000) {
@@ -45,32 +52,22 @@ function calcTotalSalary() {
     $('#totalSalary').append('<h3 class="greenSalary">Total Monthly Salary Cost: $' + totalSalary.toFixed(2) + '</h3>');
   }
 }
-function addWorker() {
-createEmoployee();
-$('#tableBody').empty();
-for (let worker of allWorkers) {
-  $('#tableBody').append('<tr>' + '<td>' + worker.fName + '</td>' +
-                        '<td>' + worker.lName + '</td>' +
-                        '<td class="empId">' + worker.idNum + '</td>' +
-                        '<td>' + worker.jobTitle + '</td>' +
-                        '<td class="salary">' + worker.annualSalary + '</td>' + '</tr>');
-                      }
-                      console.log();
-calcTotalSalary();
+function updateDom() {
+  $('#tableBody').empty();
+  for (let worker of allWorkers) {
+    $('#tableBody').append('<tr class="workerInfo">' + '<td>' + worker.fName + '</td>' +
+                          '<td>' + worker.lName + '</td>' +
+                          '<td id="empId">' + worker.idNum + '</td>' +
+                          '<td>' + worker.jobTitle + '</td>' +
+                          '<td class="workerSalary">' + worker.annualSalary + '</td>' + '</tr>');
+                        }
+  calcTotalSalary();
 }
-function removeEmployeeDom() {
-  let inputEmployee = $('#removeInput').val();
-
-}
-
 function removeEmployeeArray() {
   let inputEmployee = $('#removeInput').val();
-  for (var i = 0; i < allWorkers.length; i++) {
-    if (inputEmployee === allWorkers[i].idNum) {
-      allWorkers.splice(i, 1);
-      calcTotalSalary();
-      removeEmployeeDom();
-       break;
+  for (var x = 0; x < allWorkers.length; x++) {
+    if (inputEmployee === allWorkers[x].idNum) {
+      allWorkers.splice(x, 1);
     }
-  }
+  }updateDom();
 }
