@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div id="wholePage">
     <h1>Salary Calculator</h1>
     <h3>Add Employee</h3>
     <div id="userInput">
@@ -16,7 +17,7 @@
         <input id="lnInput" class="input" type="text" placeholder="Last Name">
         <input id="idInput" class="input" type="number" placeholder="ID Number">
         <input id="titleInput" class="input" type="text" placeholder="Job Title">
-        <input id="salaryInput" class="input" type="number" placeholder="Annual Salary"><br>
+        <input id="salaryInput" class="input" type="number" placeholder="Annual Salary">
         <button type="reset" id="submitButton">Calculate</button>
       </form>
     </div>
@@ -36,13 +37,13 @@
       </table>
       <div class="removeField">
         <form class="removeEmployee">
-          <button id="removeButton" type="reset" name="button">Remove Employee</button>
+          <button id="removeButton" type="reset" class="button">Remove Employee</button>
           <input id="removeInput" type="number" placeholder="Employee ID">
         </form>
       </div>
       <div id="totalSalary">
       </div>
-
     </div>
+  </div>
   </body>
 </html>
